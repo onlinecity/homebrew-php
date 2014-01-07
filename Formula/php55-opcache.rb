@@ -24,13 +24,9 @@ class Php55Opcache < AbstractPhp55Extension
 
   def config_file
     super + <<-EOS.undent
-      zend_optimizerplus.memory_consumption=128
-      zend_optimizerplus.interned_strings_buffer=8
-      zend_optimizerplus.max_accelerated_files=4000
-      zend_optimizerplus.revalidate_freq=60
-      zend_optimizerplus.fast_shutdown=1
-      zend_optimizerplus.enable_cli=1
-      zend_optimizerplus.enable_file_override=1
+      opcache.enable=1
+      opcache.enable_cli=1
+      opcache.revalidate_freq=0
       apc.cache_by_default = false
     EOS
   end

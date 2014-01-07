@@ -2,9 +2,9 @@ require File.join(File.dirname(__FILE__), 'abstract-php')
 
 class Php54 < AbstractPhp
   init
-  url 'http://www.php.net/get/php-5.4.21.tar.bz2/from/this/mirror'
-  sha1 'c45f89521edc0bc93d98e86760313adb2158d12d'
-  version '5.4.21'
+  url 'http://www.php.net/get/php-5.4.23.tar.bz2/from/this/mirror'
+  sha1 '1ad25b03486742dba18134ce07111146805d930f'
+  version '5.4.23'
 
   head 'https://github.com/php/php-src.git', :branch => 'PHP-5.4'
 
@@ -28,4 +28,22 @@ class Php54 < AbstractPhp
     54
   end
 
+  def patches
+    DATA
+  end
 end
+
+__END__
+diff --git a/configure b/configure
+index d506892..51617e8 100755
+--- a/configure
++++ b/configure
+@@ -38277,7 +38277,7 @@ fi
+   if test "$PHP_FREETYPE_DIR" != "no"; then
+
+     for i in $PHP_FREETYPE_DIR /usr/local /usr; do
+-      if test -f "$i/include/freetype2/freetype/freetype.h"; then
++      if test -f "$i/include/freetype2/freetype.h"; then
+         FREETYPE2_DIR=$i
+         FREETYPE2_INC_DIR=$i/include/freetype2
+         break
